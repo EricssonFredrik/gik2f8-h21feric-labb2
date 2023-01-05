@@ -89,10 +89,10 @@ function renderList() {
     todoListElement.innerHTML = '';
     if (tasks && tasks.length > 0) {
   tasks.sort(function (a, b) {
-    return a.dueDate > b.dueDate;
+    return new Date(a.dueDate) < new Date(b.dueDate) ? 1 : -1;
   });
   tasks.sort(function (a, b) {
-    return a.completed > b.completed;
+    return a.completed > b.completed ? 1 : -1;
   });
   tasks.forEach((task) => {
     todoListElement.insertAdjacentHTML("beforeend", renderTask(task));
